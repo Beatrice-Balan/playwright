@@ -8,7 +8,6 @@
     "test:traceon": "npx playwright test --trace on",
     "test-smoke": "npx playwright test --grep @Smoke",
     "test-regression": "npx playwright test --grep @Regression"
-
   },
   "keywords": [],
   "author": "",
@@ -16,6 +15,7 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.23"
+    "@types/node": "^22.15.23",
+    "dotenv": "^16.5.0"
   }
 }

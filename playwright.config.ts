@@ -4,17 +4,20 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  // globalSetup: './tests/global-setup/global-setup.ts',
+  // globalTeardown: './tests/global-setup/global-teardown.ts',
   testDir: './tests',
+  timeout: 30 * 1000,
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -32,7 +35,7 @@ export default defineConfig({
   use: {
     headless: false,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    //baseURL: process.env.baseURL, // "https://www.techglobal-training.com"
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -41,9 +44,34 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Basics',
+      testDir: './tests/basics',
+      use: { ...devices['Desktop Chrome'],
+       // baseURL: "https://www.techglobal-training.com",
+       headless: false,
+       },
     },
+    {
+      name: 'Demo Blaze',
+      testDir: './tests/demo-blaze',
+      dependencies: ['Demo Blaze Set Up'],
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: "https://demoblaze.com/",
+        storageState: './tests/auth/demo-blaze.json',
+        headless: false,
+      },
+    },
+    {
+      name: 'Demo Blaze Set Up',
+      testDir: './tests/demo-blaze-setup',      
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: "https://demoblaze.com/",
+        headless: true,
+      },
+    }
+
 
     // {
     //   name: 'firefox',
