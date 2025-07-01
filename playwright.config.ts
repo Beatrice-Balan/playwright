@@ -76,6 +76,7 @@ export default defineConfig({
       testDir: './tests/db-automation',      
       use: {
         ...devices['Desktop Chrome'],
+      headless: true,
       },
     }
 
