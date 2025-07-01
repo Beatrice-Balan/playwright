@@ -70,6 +70,13 @@ export default defineConfig({
         baseURL: "https://demoblaze.com/",
         headless: true,
       },
+    },
+        {
+      name: 'DB Automation',
+      testDir: './tests/db-automation',      
+      use: {
+        ...devices['Desktop Chrome'],
+      },
     }
 
 
