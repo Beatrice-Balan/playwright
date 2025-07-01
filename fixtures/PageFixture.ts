@@ -18,7 +18,7 @@ type PageFixture = {
 export const test = base.extend<PageFixture>({
   basePage: async({ page }, use) => {
     const basePage = new BasePage(page);
-    await page.goto(process.env.baseURL!);
+    await page.goto(process.env.BASEURL!);
 
     await use(basePage);
 
