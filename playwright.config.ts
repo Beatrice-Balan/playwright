@@ -33,7 +33,7 @@ export default defineConfig({
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: false,
+    headless: true,
     /* Base URL to use in actions like `await page.goto('/')`. */
     //baseURL: process.env.baseURL, // "https://www.techglobal-training.com"
 
@@ -48,7 +48,7 @@ export default defineConfig({
       testDir: './tests/basics',
       use: { ...devices['Desktop Chrome'],
        // baseURL: "https://www.techglobal-training.com",
-       headless: false,
+       headless: true,
        },
     },
     {
@@ -59,7 +59,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         baseURL: "https://demoblaze.com/",
         storageState: './tests/auth/demo-blaze.json',
-        headless: false,
+        headless: true,
       },
     },
     {

@@ -10,6 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
+      baseURL: ${{ secrets.baseURL }}
       DB_USER: ${{ secrets.DB_USER }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_CONNECTION_STRING: ${{ secrets.DB_CONNECTION_STRING }}
