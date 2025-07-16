@@ -44,6 +44,13 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'Regression',
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1920, height: 1080 }
+      }
+    },
+    {
       name: 'Basics',
       testDir: './tests/basics',
       use: { ...devices['Desktop Chrome'],

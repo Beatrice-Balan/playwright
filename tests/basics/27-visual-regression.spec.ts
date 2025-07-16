@@ -9,3 +9,4 @@ test('test Visual regression', async({ page }) => {
         fullPage: true
     })
 })
+
